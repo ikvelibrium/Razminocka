@@ -8,6 +8,11 @@ public class CameraMover : MonoBehaviour
 
     void Update()
     {
+        TrackPlayer();
+    }
+    
+    private void TrackPlayer()
+    {
         Vector3 newPosition = transform.position;
         newPosition.x = player.position.x;
         transform.position = newPosition;

@@ -7,26 +7,26 @@ public class LocationSpawner : MonoBehaviour
 {
    
     [SerializeField] Chunk[] ChunkPrefabs;
-    [SerializeField] private List<Chunk> _spawnedChunks = new List<Chunk>();
+    [SerializeField] private Chunk _firstChunk;
+    [SerializeField] private LayerMask _spawnWallLayer;
     [SerializeField] private int _chunksToSpawn;
     [SerializeField] private Chunk _chunkWithSpawnLinePref;
+    private List<Chunk> _spawnedChunks = new List<Chunk>();
     private int _timesDeleted = 0;
     private int _lvlCounter = 0;
     private void Start()
-    {          
-        chunkSpawn();
+    {
+        _spawnedChunks.Add(_firstChunk);
+        ChunkSpawn();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.layer == 7)
+        if (((1 << collision.gameObject.layer) & _spawnWallLayer) > 0)
         {
-            chunkSpawn();
+            ChunkSpawn();
             DeleteChunks();
         }
-
-
     }
     
     private void DeleteChunks()
@@ -37,7 +37,7 @@ public class LocationSpawner : MonoBehaviour
             _timesDeleted++;
         }
     }
-    private void chunkSpawn()
+    private void ChunkSpawn()
     {
         
         for (int i = 0; i < _chunksToSpawn + 1; i++)
@@ -47,14 +47,12 @@ public class LocationSpawner : MonoBehaviour
                 Chunk newChank = Instantiate(_chunkWithSpawnLinePref);
                 newChank.transform.position = _spawnedChunks[_spawnedChunks.Count - 1]._endLvl.position - newChank._beginLvl.localPosition;
                 _spawnedChunks.Add(newChank);
-
             } else
             {
                 Chunk newChank = Instantiate(ChunkPrefabs[Random.Range(0, ChunkPrefabs.Length)]);
                 newChank.transform.position = _spawnedChunks[_spawnedChunks.Count - 1]._endLvl.position - newChank._beginLvl.localPosition;
                 _spawnedChunks.Add(newChank);
             }
-            
             _lvlCounter++;
         }
         

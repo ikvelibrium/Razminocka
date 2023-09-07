@@ -302,14 +302,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00606590d6ee32a4c846e0ad88675ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _beginLvl: {fileID: 2545797945759241196}
-  _endLvl: {fileID: 7689764869161914273}
   _bonuses:
   - {fileID: 4298944096752431839}
   - {fileID: 3194277584150050227}
   _traps:
   - {fileID: 827927689941201702}
   - {fileID: 9188886070105252736}
+  _beginLvl: {fileID: 2545797945759241196}
+  _endLvl: {fileID: 7689764869161914273}
 --- !u!1 &3602551999058077948
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4298944096752431839
 Transform:
   m_ObjectHideFlags: 0
@@ -427,9 +427,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.052598, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.552598
 --- !u!1 &4464750623996955769
 GameObject:
   m_ObjectHideFlags: 0

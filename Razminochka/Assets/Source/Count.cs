@@ -5,15 +5,21 @@ using TMPro;
 
 public class Count : MonoBehaviour
 {
-    [SerializeField] TMP_Text text;
+    [SerializeField] private TMP_Text text;
+    [SerializeField] private LayerMask _orbLayer;
     private int _points = 0;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if( collision.gameObject.layer == 6)
+        if (((1 << collision.gameObject.layer) & _orbLayer) > 0)
         {
-            _points++;
-            text.text = " Score:" + _points;
+            AddScore();
             Destroy(collision.gameObject);
         }
+    }
+    private void AddScore()
+    {
+        _points++;
+        text.text = " Score:" + _points;
     }
 }

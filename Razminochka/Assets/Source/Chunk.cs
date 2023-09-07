@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
-    public Transform _beginLvl;
-    public Transform _endLvl;
     [SerializeField] private List<Transform> _bonuses = new List<Transform>();
     [SerializeField] private List<Transform> _traps = new List<Transform>();
+    public Transform _beginLvl;
+    public Transform _endLvl;
 
     private void Start()
     {
